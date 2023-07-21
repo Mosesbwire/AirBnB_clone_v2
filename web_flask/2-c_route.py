@@ -18,7 +18,7 @@ def hello2():
     return "HBNB"
 
 
-@app.route("/c/<text>", strict_slases=False)
+@app.route("/c/<text>", strict_slashes=False)
 def displayparam(text):
     """ print out url param """
     return "C {}".format(text.replace("_", " "))

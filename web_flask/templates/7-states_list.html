@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<HTML lang="en">
+	<HEAD>
+		<TITLE>HBNB</TITLE>
+	</HEAD>
+	<BODY>
+		<H1>States</H1>
+		<UL>
+		{%for i in range(0, n)%}
+
+		<LI>{{ states[i].id }} <BR>{{ states[i].state}}</BR></LI>
+		{%endfor%}
+		</UL>
+	</BODY>
+</HTML>

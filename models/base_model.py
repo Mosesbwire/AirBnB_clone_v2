@@ -4,7 +4,7 @@ import uuid
 import models
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, DateTime, String
 
 Base = declarative_base()
 
@@ -14,7 +14,7 @@ class BaseModel:
     for other classes
     """
 
-    # initialize database columns
+    """ initialize database columns """
     id = Column(String(60), nullable=False, primary_key=True)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = Column(DateTime, nullable=False, default=created_at)

@@ -29,7 +29,7 @@ class FileStorage:
             returns a dictionary of __object
         """
         all_return = {}
-
+        
         # if cls is valid
         if cls:
             if cls.__name__ in self.all_classes:
@@ -54,6 +54,7 @@ class FileStorage:
     def save(self):
         """serialize the file path to JSON file path
         """
+        
         my_dict = {}
         for key, value in self.__objects.items():
             my_dict[key] = value.to_dict()

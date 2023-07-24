@@ -4,30 +4,22 @@
 from flask import Flask, render_template
 from models import *
 from models import storage
-import json
+
 
 app = Flask(__name__)
 
-@app.route("/states_list", strict_slashes=False)
-def allStates():
-    """ returns html with all the states from the db """
-    obj = storage.all()
-    states = []
-    for name in obj:
-        if (isinstance(obj[name], State)):
-            data = {
-                    'state': obj[name].name,
-                    'id': obj[name].id
-                    }
-            states.append(data)
-    
-    return render_template("7-states_list.html", n=len(states), states=states)
-
-
 @app.teardown_appcontext
 def closeDbConnection(exception):
-    """ closes connection """
+    """ close db connection after call """
     storage.close()
+
+
+@app.route("/states_list", strict_slashes=False)
+def states_list():
+    """ returns html with all the states from the db """
+    states = sorted(list(storage.all(State).values()), key=lambda s: s.name)
+    
+    return render_template("7-states_list.html", states=states)
 
 
 if __name__ == "__main__":

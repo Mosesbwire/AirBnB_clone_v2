@@ -14,19 +14,19 @@ def allStates():
     obj = storage.all()
     states = []
     for name in obj:
-
-        if(isinstance(obj[name], State)):
+        if (isinstance(obj[name], State)):
             data = {
-                'state': obj[name].name,
-                'id': obj[name].id
-            }
+                    'state': obj[name].name,
+                    'id': obj[name].id
+                    }
             states.append(data)
-
+    
     return render_template("7-states_list.html", n=len(states), states=states)
 
 
 @app.teardown_appcontext
 def closeDbConnection(exception):
+    """ closes connection """
     storage.close()
 
 

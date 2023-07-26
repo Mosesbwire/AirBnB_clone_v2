@@ -8,6 +8,7 @@ from models import storage
 
 app = Flask(__name__)
 
+
 @app.teardown_appcontext
 def closeDbConnection(exception):
     """ close db connection after call """
@@ -18,7 +19,7 @@ def closeDbConnection(exception):
 def states_list():
     """ returns html with all the states from the db """
     states = sorted(list(storage.all(State).values()), key=lambda s: s.name)
-    
+
     return render_template("7-states_list.html", states=states)
 
 
